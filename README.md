@@ -14,41 +14,17 @@ bash build_use.sh
 ## Install
 
 ```bash
-pip install TODO
+pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/en_use-0.1.0/en_use-0.1.0.tar.gz#en_use-0.1.0
 ```
 
 ## Usage
 
 ```
 import spacy
-nlp = spacy.load('universal_sentence_encoder_model')
+nlp = spacy.load('en_use')
 ```
 
 ## TODOs 
 
 Model config:
 - `use_cache` flag
-
-## Commands old
-
-
-docker run -p 8501:8501 -v `pwd`/tfserving/universal_encoder:/models/universal_encoder -e MODEL_NAME=universal_encoder -t tensorflow/serving:1.13.1
-
-run: python create.py
-
-check status: http://localhost:8501/v1/models/universal_encoder
-
-POST: http://localhost:8501/v1/models/universal_encoder:predict
-
-{
-	"instances": [{
-		"text": "Is there anyone there?"
-	}]
-}
-
-result:
-{
-    "predictions": [
-        [EMBEDDED_SENTENCE_VALUE]
-    ]
-}

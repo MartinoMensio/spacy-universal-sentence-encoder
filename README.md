@@ -5,10 +5,17 @@ Motivation to have different models:
 https://blog.floydhub.com/when-the-best-nlp-model-is-not-the-best-choice/
 The USE is trained on different tasks which are more suited to identifying sentence similarity. Source Google AI blog https://ai.googleblog.com/2018/05/advances-in-semantic-textual-similarity.html 
 
+## Build model
+Or use the model built provided in the "packages" of this repo.
+```bash
+bash build_use.sh
+```
+
 ## Install
 
-Create model folder: `python create.py`
-run setup.py: `python setup.py develop` or `pip install -e .`
+```bash
+pip install TODO
+```
 
 ## Usage
 

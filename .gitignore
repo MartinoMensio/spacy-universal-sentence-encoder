@@ -1,3 +1,6 @@
+use_model/**
+use_package/**
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

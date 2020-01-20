@@ -8,8 +8,7 @@ from spacy.tokens import Span
 from spacy.matcher import Matcher
 
 from .language import UniversalSentenceEncoder
-
-__version__ = get_model_meta(Path(__file__).parent)['version']
+UniversalSentenceEncoder.install_extensions()
 
 Language.factories['overwrite_vectors'] = lambda nlp, **cfg: OverwriteVectors(nlp, **cfg)
 

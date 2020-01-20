@@ -1,0 +1,29 @@
+{
+    "lang": "en",
+    "name": "use",
+    "version": "0.1.0",
+    "spacy_version": ">=2.2.3",
+    "description": "Using TFHub USE",
+    "author": "Martino Mensio",
+    "email": "martino.mensio@open.ac.uk",
+    "url": "https://github.com/MartinoMensio/spacy-universal-sentence-embedding-tfhub",
+    "license": "",
+    "requirements": [
+        "universal_sentence_encoder @ git+ssh://git@github.com/MartinoMensio/spacy-universal-sentence-embedding-tfhub"
+    ],
+    "vectors": {
+        "width": 0,
+        "vectors": 0,
+        "keys": 0,
+        "name": null
+    },
+    "pipeline": [
+        "sentencizer",
+        "overwrite_vectors"
+    ],
+    "factories": {
+        "sentencizer": "sentencizer",
+        "overwrite_vectors": "overwrite_vectors"
+    },
+    "labels": {}
+}

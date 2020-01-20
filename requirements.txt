@@ -1,0 +1,4 @@
+-e .
+
+pylint
+autopep8

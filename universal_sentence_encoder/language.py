@@ -68,7 +68,7 @@ class TFHubWrapper(object):
     # extension implementation
     def embed_one(self, span):
         text = span.text
-        print('enable_cache', TFHubWrapper.enable_cache)
+        # print('enable_cache', TFHubWrapper.enable_cache)
         if TFHubWrapper.enable_cache and text in self.embed_cache:
             return self.embed_cache[text]
         else:

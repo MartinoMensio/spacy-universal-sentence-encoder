@@ -19,12 +19,13 @@ pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tf
 
 ## Usage
 
-```
+```python
 import spacy
 nlp = spacy.load('en_use')
 ```
 
+
 ## TODOs 
 
 Model config:
-- `use_cache` flag
+- `enable_cache` flag is not working

@@ -11,13 +11,14 @@ import os
 import spacy
 
 class UniversalSentenceEncoder(Language):
+    tf_wrapper: Any
 
     @staticmethod
     def install_extensions():
-        tf_wrapper = TFHubWrapper()
+        UniversalSentenceEncoder.tf_wrapper = TFHubWrapper()
         # set the extension both on doc and span level
-        Span.set_extension('universal_sentence_encoding', getter=tf_wrapper.embed_one, force=True)
-        Doc.set_extension('universal_sentence_encoding', getter=tf_wrapper.embed_one, force=True)
+        Span.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
+        Doc.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
 
     @staticmethod
     def overwrite_vectors(doc):
@@ -33,10 +34,6 @@ class UniversalSentenceEncoder(Language):
         # doc.user_token_hooks["vector_norm"] = lambda a: a._.universal_sentence_encoding
         return doc
 
-    def __init__(self, vocab=True, make_doc=True, max_length=10 ** 6, meta={}, **kwargs):
-        # self.add_pipe(self.create_pipe('sentencizer'))
-        # self.add_pipe(UniversalSentenceEncoder.overwrite_vectors)
-        pass
 
     @staticmethod
     def create_nlp(language_base='en'):
@@ -51,15 +48,15 @@ class UniversalSentenceEncoderPipe(Pipe):
 
 class TFHubWrapper(object):
     embed_cache: Dict[str, Any]
+    enable_cache = True
 
-    def __init__(self, enable_cache=True):
+    def __init__(self):
         self.embed_cache = {}
 
         logging.set_verbosity(logging.ERROR)
         self.module_url = "https://tfhub.dev/google/universal-sentence-encoder/4" #@param ["https://tfhub.dev/google/universal-sentence-encoder/4", "https://tfhub.dev/google/universal-sentence-encoder-large/5"]
         self.model = hub.load(self.module_url)
         print("module %s loaded" % self.module_url)
-        self.enable_cache = enable_cache
 
     def embed(self, texts):
         # print('embed called')
@@ -71,10 +68,11 @@ class TFHubWrapper(object):
     # extension implementation
     def embed_one(self, span):
         text = span.text
-        if self.enable_cache and text in self.embed_cache:
+        print('enable_cache', TFHubWrapper.enable_cache)
+        if TFHubWrapper.enable_cache and text in self.embed_cache:
             return self.embed_cache[text]
         else:
             result = self.embed([text])[0]
-            if self.enable_cache:
+            if TFHubWrapper.enable_cache:
                 self.embed_cache[text] = result
             return result

@@ -21,6 +21,11 @@
         "sentencizer",
         "overwrite_vectors"
     ],
+    "pipeline_args": {
+        "overwrite_vectors": {
+            "enable_cache": true
+        }
+    },
     "factories": {
         "sentencizer": "sentencizer",
         "overwrite_vectors": "overwrite_vectors"

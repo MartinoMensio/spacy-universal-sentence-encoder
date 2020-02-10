@@ -37,8 +37,9 @@ class UniversalSentenceEncoder(Language):
 
     @staticmethod
     def create_nlp(language_base='en'):
-        nlp = spacy.blank(language_base)
-        nlp.add_pipe(nlp.create_pipe('sentencizer'))
+        # nlp = spacy.blank(language_base)
+        # nlp.add_pipe(nlp.create_pipe('sentencizer'))
+        nlp = spacy.load(f'{language_base}_core_web_sm')
         nlp.add_pipe(UniversalSentenceEncoder.overwrite_vectors)
         return nlp
 

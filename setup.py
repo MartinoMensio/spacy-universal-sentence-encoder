@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+# to import the version and also run the module one time (download cache model)
 import universal_sentence_encoder
 
 def setup_package():
@@ -14,7 +15,9 @@ def setup_package():
             'spacy',
             'tensorflow-hub',
             'seaborn'
-        ]
+        ],
+        # keep the models folder in the wheel: the tfhub cache is shipped during the installation
+        package_data={"universal_sentence_encoder": ["models/*", "models/*/*", "models/*/*/*"]}
     )
 
 if __name__ == "__main__":

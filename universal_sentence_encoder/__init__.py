@@ -9,6 +9,8 @@ from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import Matcher
 
+__version__ = "0.1.0"
+
 from .language import UniversalSentenceEncoder
 UniversalSentenceEncoder.install_extensions()
 

@@ -8,6 +8,7 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import numpy as np
 import os
+import pathlib
 import spacy
 
 class UniversalSentenceEncoder(Language):
@@ -56,6 +57,8 @@ class TFHubWrapper(object):
 
         logging.set_verbosity(logging.ERROR)
         self.module_url = "https://tfhub.dev/google/universal-sentence-encoder/4" #@param ["https://tfhub.dev/google/universal-sentence-encoder/4", "https://tfhub.dev/google/universal-sentence-encoder-large/5"]
+        # models saved here
+        os.environ['TFHUB_CACHE_DIR'] = str(pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'models')
         self.model = hub.load(self.module_url)
         print("module %s loaded" % self.module_url)
 

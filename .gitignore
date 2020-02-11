@@ -1,5 +1,6 @@
 use_model/**
 use_package/**
+universal_sentence_encoder/models/**
 .DS_store
 
 # Byte-compiled / optimized / DLL files

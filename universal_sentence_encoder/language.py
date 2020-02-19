@@ -16,10 +16,22 @@ class UniversalSentenceEncoder(Language):
 
     @staticmethod
     def install_extensions():
-        UniversalSentenceEncoder.tf_wrapper = TFHubWrapper()
+        def get_encoding(token_span_doc):
+            # tokens, spans and docs all have the `.doc` property
+            wrapper = token_span_doc.doc._.tfhub_wrapper
+            if wrapper == None:
+                raise ValueError('Wrapper None')
+            return wrapper.embed_one(token_span_doc)
+        
+        # Placeholder for a reference to the wrapper
+        Doc.set_extension('tfhub_wrapper', default=None, force=True)
         # set the extension both on doc and span level
-        Span.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
-        Doc.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
+        # Token.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
+        # Span.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
+        # Doc.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
+        Token.set_extension('universal_sentence_encoding', getter=get_encoding, force=True)
+        Span.set_extension('universal_sentence_encoding', getter=get_encoding, force=True)
+        Doc.set_extension('universal_sentence_encoding', getter=get_encoding, force=True)
 
     @staticmethod
     def overwrite_vectors(doc):
@@ -33,6 +45,9 @@ class UniversalSentenceEncoder(Language):
         # doc.user_hooks["vector_norm"] = lambda a: a._.universal_sentence_encoding
         # doc.user_span_hooks["vector_norm"] = lambda a: a._.universal_sentence_encoding
         # doc.user_token_hooks["vector_norm"] = lambda a: a._.universal_sentence_encoding
+        
+        # save a reference to the wrapper
+        doc._.tfhub_wrapper = TFHubWrapper.get_instance()
         return doc
 
 
@@ -44,6 +59,17 @@ class UniversalSentenceEncoder(Language):
         nlp.add_pipe(UniversalSentenceEncoder.overwrite_vectors)
         return nlp
 
+    # def __init__(self, vocab=True, make_doc=True, max_length=10 ** 6, meta={}, **kwargs):
+    #     self.tf_wrapper = TFHubWrapper.get_instance()
+    #     super.__init__(self, vocab, make_doc, max_length, meta=meta, **kwargs)
+
+    @staticmethod
+    def create_wrapper(enable_cache=True):
+        """Helper method, run to do the loading now"""
+        UniversalSentenceEncoder.tf_wrapper = TFHubWrapper.get_instance()
+        # TODO the enable_cache with singleton is not a great idea
+        UniversalSentenceEncoder.tf_wrapper.enable_cache = enable_cache
+
 class UniversalSentenceEncoderPipe(Pipe):
     pass
 
@@ -51,6 +77,15 @@ class UniversalSentenceEncoderPipe(Pipe):
 class TFHubWrapper(object):
     embed_cache: Dict[str, Any]
     enable_cache = True
+    instance = None
+
+    @staticmethod
+    def get_instance():
+        # singleton
+        if not TFHubWrapper.instance:
+            TFHubWrapper.instance = TFHubWrapper()
+        return TFHubWrapper.instance
+
 
     def __init__(self):
         self.embed_cache = {}

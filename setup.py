@@ -1,8 +1,10 @@
 from setuptools import setup, find_packages
-# to import the version and also run the module one time (download cache model)
+# to import the version
 import universal_sentence_encoder
 
 def setup_package():
+    # run the module one time (download cache model)
+    universal_sentence_encoder.UniversalSentenceEncoder.create_wrapper()
     setup(
         name="universal_sentence_encoder",
         entry_points={

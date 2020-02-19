@@ -17,14 +17,9 @@ class UniversalSentenceEncoder(Language):
     @staticmethod
     def install_extensions():
         def get_encoding(token_span_doc):
-            # tokens, spans and docs all have the `.doc` property
-            wrapper = token_span_doc.doc._.tfhub_wrapper
-            if wrapper == None:
-                raise ValueError('Wrapper None')
+            wrapper = TFHubWrapper.get_instance()
             return wrapper.embed_one(token_span_doc)
         
-        # Placeholder for a reference to the wrapper
-        Doc.set_extension('tfhub_wrapper', default=None, force=True)
         # set the extension both on doc and span level
         # Token.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
         # Span.set_extension('universal_sentence_encoding', getter=UniversalSentenceEncoder.tf_wrapper.embed_one, force=True)
@@ -46,8 +41,6 @@ class UniversalSentenceEncoder(Language):
         # doc.user_span_hooks["vector_norm"] = lambda a: a._.universal_sentence_encoding
         # doc.user_token_hooks["vector_norm"] = lambda a: a._.universal_sentence_encoding
         
-        # save a reference to the wrapper
-        doc._.tfhub_wrapper = TFHubWrapper.get_instance()
         return doc
 
 

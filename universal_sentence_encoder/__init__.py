@@ -2,14 +2,15 @@
 from __future__ import unicode_literals
 
 import os
-import spacy
 from pathlib import Path
+import spacy
 from spacy.util import load_model_from_init_py, get_model_meta
 from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import Matcher
+from .util import pkg_meta
 
-__version__ = "0.1.3"
+__version__ = pkg_meta["version"]
 
 from .language import UniversalSentenceEncoder
 UniversalSentenceEncoder.install_extensions()

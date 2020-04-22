@@ -1,18 +1,27 @@
 {
     "lang": "en",
-    "name": "use",
-    "version": "0.1.3",
+    "name": "use_md",
+    "version": "0.2.0",
     "spacy_version": ">=2.2.3",
-    "description": "Using TFHub USE",
+    "description": "TensorFlow Hub wrapper for Universal Sentence Encoder",
     "author": "Martino Mensio",
     "email": "martino.mensio@open.ac.uk",
-    "url": "https://github.com/MartinoMensio/spacy-universal-sentence-embedding-tfhub",
-    "license": "",
+    "url": "https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub",
+    "license": "MIT",
     "requirements": [
         "universal_sentence_encoder @ git+ssh://git@github.com/MartinoMensio/spacy-universal-sentence-embedding-tfhub"
     ],
+    "sources": [{
+        "name": "Universal Sentence Encoder",
+        "url": "https://tfhub.dev/google/universal-sentence-encoder",
+        "license": "Apache-2.0"
+    }, {
+        "name": "SpaCy English model",
+        "url": "https://spacy.io/models/en#en_core_web_sm",
+        "license": "MIT"
+    }],
     "vectors": {
-        "width": 0,
+        "width": 512,
         "vectors": 0,
         "keys": 0,
         "name": null
@@ -21,17 +30,14 @@
         "tagger",
         "parser",
         "ner",
+        "save_tfhub_model_url",
         "overwrite_vectors"
     ],
-    "pipeline_args": {
-        "overwrite_vectors": {
-            "enable_cache": true
-        }
-    },
     "factories": {
         "tagger": "tagger",
         "parser": "parser",
         "ner": "ner",
+        "save_tfhub_model_url": "save_tfhub_model_url",
         "overwrite_vectors": "overwrite_vectors"
     },
     "labels": {

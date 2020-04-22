@@ -1,5 +1,7 @@
 use_model/**
+models/**
 use_package/**
+packages/**
 universal_sentence_encoder/models/**
 .DS_store
 

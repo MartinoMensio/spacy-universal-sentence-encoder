@@ -1,0 +1,1 @@
+include spacy_universal_sentence_encoder/meta/*.json

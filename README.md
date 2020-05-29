@@ -7,7 +7,9 @@ The USE is trained on different tasks which are more suited to identifying sente
 
 ## Install
 
-You can install this repository: `pip install git+https://https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub`
+You can install this repository:
+- pyPI: `pip install spacy-universal-sentence-encoder`
+- github: `pip install git+https://https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub`
 
 Or you can install the following pre-packaged models with pip:
 
@@ -19,23 +21,26 @@ Or you can install the following pre-packaged models with pip:
 | xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/xx_use_lg-0.2.1/xx_use_lg-0.2.1.tar.gz#xx_use_lg-0.2.1` |
 
 
-## Build model
-Or instead, you can build the models on your own, by selecting which model to build in the `build_use.sh` script, and then run:
-
-```bash
-bash build_use.sh
-```
-
-
 ## Usage
 
-You can use the models on their own:
+First you have to import your model.
+
+If you installed the model packages (see table above) you can use the usual spacy API to load this model:
 
 ```python
-# usual spacy way of doing
 import spacy
-# this loads the wrapper
 nlp = spacy.load('en_use_md')
+```
+
+Otherwise you need to load the model in the following way (the first time that it is run, it downloads the model)
+```python
+import spacy_universal_sentence_encoder
+nlp = spacy_universal_sentence_encoder.load_model('xx_use_lg')
+```
+
+Then you can use the models
+
+```python
 # get two documents
 doc_1 = nlp('Hi there, how are you?')
 doc_2 = nlp('Hello there, how are you doing today?')
@@ -47,14 +52,7 @@ print(doc_1[2:4].vector.shape)
 print(doc_1.similarity(doc_2[0:7]))
 ```
 
-Or load a model in this way (it downloads the model):
-```python
-import spacy_universal_sentence_encoder
-nlp = spacy_universal_sentence_encoder.load_model('xx_use_lg')
-```
-
-
-Or use them just on a already available language pipeline (e.g. to keep your components or to have better parsing than the base spacy model used here):
+You can use the model on a already available language pipeline (e.g. to keep your components or to have better parsing than the base spacy model used here):
 
 ```python
 import spacy
@@ -85,4 +83,3 @@ def set_tfhub_model_url(doc):
 nlp.add_pipe(set_tfhub_model_url, before='overwrite_vectors')
 
 ```
-

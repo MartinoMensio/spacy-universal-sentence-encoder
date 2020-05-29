@@ -7,14 +7,16 @@ The USE is trained on different tasks which are more suited to identifying sente
 
 ## Install
 
-You can install the following models with pip:
+You can install this repository: `pip install git+https://https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub`
+
+Or you can install the following pre-packaged models with pip:
 
 | model name | source | pip package |
 |------------|--------|---|
-| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/en_use_md-0.2.0/en_use_md-0.2.0.tar.gz#en_use_md-0.2.0 ` |
-| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/en_use_lg-0.2.0/en_use_lg-0.2.0.tar.gz#en_use_lg-0.2.0` |
-| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/xx_use_md-0.2.0/xx_use_md-0.2.0.tar.gz#xx_use_md-0.2.0 ` |
-| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/xx_use_lg-0.2.0/xx_use_lg-0.2.0.tar.gz#xx_use_lg-0.2.0` |
+| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/en_use_md-0.2.1/en_use_md-1.tar.gz#en_use_md-0.2.1 ` |
+| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/en_use_lg-0.2.1/en_use_lg-0.2.1.tar.gz#en_use_lg-0.2.1` |
+| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/xx_use_md-0.2.1/xx_use_md-0.2.1.tar.gz#xx_use_md-0.2.1 ` |
+| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/xx_use_lg-0.2.1/xx_use_lg-0.2.1.tar.gz#xx_use_lg-0.2.1` |
 
 
 ## Build model
@@ -45,6 +47,13 @@ print(doc_1[2:4].vector.shape)
 print(doc_1.similarity(doc_2[0:7]))
 ```
 
+Or load a model in this way (it downloads the model):
+```python
+import spacy_universal_sentence_encoder
+nlp = spacy_universal_sentence_encoder.load_model('xx_use_lg')
+```
+
+
 Or use them just on a already available language pipeline (e.g. to keep your components or to have better parsing than the base spacy model used here):
 
 ```python
@@ -61,7 +70,6 @@ nlp.add_pipe(overwrite_vectors)
 doc = nlp('Hi')
 
 
-
 # or use a different model
 other_model_url = 'https://tfhub.dev/google/universal-sentence-encoder-multilingual/3'
 
@@ -72,6 +80,7 @@ doc._.tfhub_model_url = other_module_url
 def set_tfhub_model_url(doc):
     doc._.tfhub_model_url = other_model_url
     return doc
+
 # add this pipeline component before the `overwrite_vectors`, because it will look at that extension
 nlp.add_pipe(set_tfhub_model_url, before='overwrite_vectors')
 

@@ -9,6 +9,7 @@ from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import Matcher
 from . import util
+from .util import create_lang as load_model
 
 __version__ = util.pkg_meta["version"]
 

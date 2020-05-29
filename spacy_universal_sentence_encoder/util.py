@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 try:  # Python 3.8
     import importlib.metadata as importlib_metadata
 except ImportError:
@@ -44,3 +47,17 @@ configs = {
         'tfhub_model_url': 'https://tfhub.dev/google/universal-sentence-encoder-xling/en-fr/1'
     },
 }
+
+def create_lang(model_name, download_now=True):
+    from . import language
+    if model_name not in configs:
+        raise ValueError(f'Model "{model_name}" not available')
+    selected_config = configs[model_name]
+    nlp = language.UniversalSentenceEncoder.create_nlp(selected_config['spacy_base_model'], selected_config['tfhub_model_url'])
+    with open(Path(__file__).parent.absolute() / 'meta' / f'{model_name}.json') as f:
+        nlp.meta = json.load(f)
+    if download_now:
+        doc = nlp('Test')
+        # this line makes the TF Hub download the model now
+        _ = doc.vector.shape
+    return nlp

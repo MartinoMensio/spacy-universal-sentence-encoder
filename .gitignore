@@ -2,7 +2,7 @@ use_model/**
 models/**
 use_package/**
 packages/**
-universal_sentence_encoder/models/**
+spacy_universal_sentence_encoder/models/**
 .DS_store
 
 # Byte-compiled / optimized / DLL files

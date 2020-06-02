@@ -9,7 +9,7 @@
     "url": "https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub",
     "license": "MIT",
     "requirements": [
-        "spacy_universal_sentence_encoder @ git+https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub.git@v0.2.1"
+        "spacy_universal_sentence_encoder @ git+https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub.git@v0.2.2"
     ],
     "sources": [{
         "name": "Universal Sentence Encoder - Large",

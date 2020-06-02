@@ -8,8 +8,8 @@ The USE is trained on different tasks which are more suited to identifying sente
 ## Install
 
 You can install this repository:
-- pyPI: `pip install spacy-universal-sentence-encoder`
-- github: `pip install git+https://https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub`
+- pyPI: `pip install spacy-universal-sentence-encoder` (problems with base models dependency xx_ent_wiki_sm and en_core_web_sm: base models cannot be specified as dependencies for pyPI, better to keep releases o GitHub)
+- github: `pip install git+https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub.git`
 
 Or you can install the following pre-packaged models with pip:
 
@@ -33,6 +33,7 @@ nlp = spacy.load('en_use_md')
 ```
 
 Otherwise you need to load the model in the following way (the first time that it is run, it downloads the model)
+
 ```python
 import spacy_universal_sentence_encoder
 nlp = spacy_universal_sentence_encoder.load_model('xx_use_lg')
@@ -72,7 +73,7 @@ doc = nlp('Hi')
 other_model_url = 'https://tfhub.dev/google/universal-sentence-encoder-multilingual/3'
 
 # by setting the extension `tfhub_model_url` on the doc
-doc._.tfhub_model_url = other_module_url
+doc._.tfhub_model_url = other_model_url
 
 # or by adding a pipeline component that sets on every document
 def set_tfhub_model_url(doc):

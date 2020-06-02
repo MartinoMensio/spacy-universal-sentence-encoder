@@ -21,7 +21,8 @@ def setup_package():
     long_description_content_type='text/markdown',
     package_data={'spacy_universal_sentence_encoder': ['meta/*.json']},
     include_package_data=True,
-    cmdclass={'install': PostInstall})
+    # cmdclass={'install': PostInstall}
+    )
 
 if __name__ == "__main__":
     setup_package()

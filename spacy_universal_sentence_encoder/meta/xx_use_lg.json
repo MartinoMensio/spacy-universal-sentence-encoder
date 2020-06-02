@@ -1,7 +1,7 @@
 {
     "lang": "xx",
     "name": "use_lg",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "spacy_version": ">=2.2.3",
     "description": "TensorFlow Hub wrapper for Universal Sentence Encoder",
     "author": "Martino Mensio",

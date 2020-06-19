@@ -16,10 +16,10 @@ do
     # create the package
     mkdir -p packages
     python -m spacy package models/$MODEL_NAME packages --force
-    pushd packages/$MODEL_NAME-0.2.2
+    pushd packages/$MODEL_NAME-0.2.3
     # zip it
     python setup.py sdist
     # install the tar.gz from dist folder
-    pip install dist/$MODEL_NAME-0.2.2.tar.gz
+    pip install dist/$MODEL_NAME-0.2.3.tar.gz
     popd
 done

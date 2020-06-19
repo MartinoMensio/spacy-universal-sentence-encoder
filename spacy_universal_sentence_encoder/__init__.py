@@ -19,7 +19,7 @@ UniversalSentenceEncoder.install_extensions()
 
 # warning suppress for empty vocabulary 
 # (setting on the environ wouldn't work if spacy is already loaded)
-warnings.filterwarnings('ignore', spacy.errors.Warnings.W007)
+warnings.filterwarnings('ignore', '.*W007.*', category=UserWarning)
 
 Language.factories['save_tfhub_model_url'] = lambda nlp, **cfg: SaveTfhubModelUrl(nlp, **cfg)
 Language.factories['overwrite_vectors'] = lambda nlp, **cfg: OverwriteVectors(nlp, **cfg)

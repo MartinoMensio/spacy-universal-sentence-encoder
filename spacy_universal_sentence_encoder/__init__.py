@@ -8,6 +8,7 @@ from spacy.util import load_model_from_init_py, get_model_meta
 from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import Matcher
+import warnings
 from . import util
 from .util import create_lang as load_model
 
@@ -18,7 +19,7 @@ UniversalSentenceEncoder.install_extensions()
 
 # warning suppress for empty vocabulary 
 # (setting on the environ wouldn't work if spacy is already loaded)
-spacy.errors.SPACY_WARNING_IGNORE.append('W007')
+warnings.filterwarnings('ignore', spacy.errors.Warnings.W007)
 
 Language.factories['save_tfhub_model_url'] = lambda nlp, **cfg: SaveTfhubModelUrl(nlp, **cfg)
 Language.factories['overwrite_vectors'] = lambda nlp, **cfg: OverwriteVectors(nlp, **cfg)

@@ -1,15 +1,21 @@
 # Spacy - Universal Sentence Encoder
 
+Make use of Google's Universal Sentence Encoder directly within SpaCy.
+This library lets you embed [Docs](https://spacy.io/api/doc), [Spans](https://spacy.io/api/span) and [Tokens](https://spacy.io/api/token) from the [Universal Sentence Encoder family available on TensorFlow Hub](https://tfhub.dev/google/collections/universal-sentence-encoder/1).
+
 ## Motivation
-Motivation to have different models:
+There are many different reasons to not always use BERT. For example to have embeddings that are tuned specifically for another task (e.g. sentence similarity). See this very useful blog article:
 https://blog.floydhub.com/when-the-best-nlp-model-is-not-the-best-choice/
-The USE is trained on different tasks which are more suited to identifying sentence similarity. Source Google AI blog https://ai.googleblog.com/2018/05/advances-in-semantic-textual-similarity.html 
+
+The Universal Sentence Encoder is trained on different tasks which are more suited to identifying sentence similarity. [Google AI blog](https://ai.googleblog.com/2018/05/advances-in-semantic-textual-similarity.html) [paper](https://arxiv.org/abs/1803.11175)
+
+This library uses the [`user_hooks` of spaCy](https://spacy.io/usage/processing-pipelines#custom-components-user-hooks) to use an external model for the vectors, in this case a simple wrapper to the models available on TensorFlow Hub.
 
 ## Install
 
-You can install this repository:
-- pyPI: `pip install spacy-universal-sentence-encoder` (problems with base models dependency xx_ent_wiki_sm and en_core_web_sm: base models cannot be specified as dependencies for pyPI, better to keep releases o GitHub)
+You can install this library from:
 - github: `pip install git+https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub.git`
+- pyPI: `pip install spacy-universal-sentence-encoder` **not working** (problems with base models dependency xx_ent_wiki_sm and en_core_web_sm: base models cannot be specified as dependencies for pyPI, better to keep releases on GitHub)
 
 Or you can install the following pre-packaged models with pip:
 
@@ -32,14 +38,14 @@ import spacy
 nlp = spacy.load('en_use_md')
 ```
 
-Otherwise you need to load the model in the following way (the first time that it is run, it downloads the model)
+Otherwise you need to load the model in the following way (the first time that it is run, it downloads the model):
 
 ```python
 import spacy_universal_sentence_encoder
 nlp = spacy_universal_sentence_encoder.load_model('xx_use_lg')
 ```
 
-Then you can use the models
+Then you can use the models:
 
 ```python
 # get two documents
@@ -53,7 +59,7 @@ print(doc_1[2:4].vector.shape)
 print(doc_1.similarity(doc_2[0:7]))
 ```
 
-You can use the model on a already available language pipeline (e.g. to keep your components or to have better parsing than the base spacy model used here):
+You can use the model on an already available language pipeline (e.g. to integrate with your custom components or to have better parsing than the base spaCy model used here):
 
 ```python
 import spacy

@@ -97,6 +97,8 @@ class TFHubWrapper(object):
         self.module_url = tfhub_model_url
         # models saved here
         os.environ['TFHUB_CACHE_DIR'] = str(pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'models')
+        # show download info
+        os.environ['TFHUB_DOWNLOAD_PROGRESS'] = '1'
         self.model = hub.load(self.module_url)
         # print(f'module {self.module_url} loaded')
 

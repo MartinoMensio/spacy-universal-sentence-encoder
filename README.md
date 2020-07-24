@@ -3,6 +3,8 @@
 Make use of Google's Universal Sentence Encoder directly within SpaCy.
 This library lets you embed [Docs](https://spacy.io/api/doc), [Spans](https://spacy.io/api/span) and [Tokens](https://spacy.io/api/token) from the [Universal Sentence Encoder family available on TensorFlow Hub](https://tfhub.dev/google/collections/universal-sentence-encoder/1).
 
+For using sentence-BERT in spaCy, see https://github.com/MartinoMensio/spacy-sentence-bert
+
 ## Motivation
 There are many different reasons to not always use BERT. For example to have embeddings that are tuned specifically for another task (e.g. sentence similarity). See this very useful blog article:
 https://blog.floydhub.com/when-the-best-nlp-model-is-not-the-best-choice/

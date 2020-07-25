@@ -16,17 +16,17 @@ This library uses the [`user_hooks` of spaCy](https://spacy.io/usage/processing-
 ## Install
 
 You can install this library from:
-- github: `pip install git+https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub.git`
+- github: `pip install git+https://github.com/MartinoMensio/spacy-universal-sentence-encoder.git`
 - pyPI: `pip install spacy-universal-sentence-encoder`
 
 Or you can install the following pre-packaged models with pip:
 
 | model name | source | pip package |
 |------------|--------|---|
-| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/v0.3.0/en_use_md-0.3.0.tar.gz#en_use_md-0.3.0` |
-| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/v0.3.0/en_use_lg-0.3.0.tar.gz#en_use_lg-0.3.0` |
-| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/v0.3.0/xx_use_md-0.3.0.tar.gz#xx_use_md-0.3.0` |
-| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub/releases/download/v0.3.0/xx_use_lg-0.3.0.tar.gz#xx_use_lg-0.3.0` |
+| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/en_use_md-0.3.0.tar.gz#en_use_md-0.3.0` |
+| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/en_use_lg-0.3.0.tar.gz#en_use_lg-0.3.0` |
+| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/xx_use_md-0.3.0.tar.gz#xx_use_md-0.3.0` |
+| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/xx_use_lg-0.3.0.tar.gz#xx_use_lg-0.3.0` |
 
 
 ## Usage

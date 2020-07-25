@@ -6,7 +6,7 @@
     "description": "TensorFlow Hub wrapper for Universal Sentence Encoder",
     "author": "Martino Mensio",
     "email": "martino.mensio@open.ac.uk",
-    "url": "https://github.com/MartinoMensio/spacy-universal-sentence-encoder-tfhub",
+    "url": "https://github.com/MartinoMensio/spacy-universal-sentence-encoder",
     "license": "MIT",
     "requirements": [
         "spacy_universal_sentence_encoder==0.3.0"

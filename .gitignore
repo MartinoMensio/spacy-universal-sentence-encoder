@@ -1,6 +1,4 @@
-use_model/**
 models/**
-use_package/**
 packages/**
 spacy_universal_sentence_encoder/models/**
 .DS_store

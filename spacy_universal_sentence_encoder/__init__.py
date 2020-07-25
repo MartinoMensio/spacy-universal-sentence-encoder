@@ -10,50 +10,52 @@ from spacy.tokens import Span
 from spacy.matcher import Matcher
 import warnings
 from . import util
+
 from .util import create_lang as load_model
 
 __version__ = util.pkg_meta["version"]
 
-from .language import UniversalSentenceEncoder
+from .language import UniversalSentenceEncoder, TFHubWrapper
 UniversalSentenceEncoder.install_extensions()
 
-# warning suppress for empty vocabulary 
-# (setting on the environ wouldn't work if spacy is already loaded)
-warnings.filterwarnings('ignore', '.*W007.*', category=UserWarning)
+# warning suppress for empty vocabulary
+warnings.filterwarnings('ignore', message=r"\[W007\]", category=UserWarning)
 
-Language.factories['save_tfhub_model_url'] = lambda nlp, **cfg: SaveTfhubModelUrl(nlp, **cfg)
-Language.factories['overwrite_vectors'] = lambda nlp, **cfg: OverwriteVectors(nlp, **cfg)
+# language factories for the pipeline stages
+Language.factories['use_add_model_to_doc'] = lambda nlp, **cfg: AddModelToDoc(nlp, **cfg)
+Language.factories['use_overwrite_vectors'] = lambda nlp, **cfg: OverwriteVectors(nlp, **cfg)
 
 def load(**overrides):
     return load_model_from_init_py(__file__, **overrides)
 
-class SaveTfhubModelUrl(object):
-    name = 'save_tfhub_model_url'
+def create_from(nlp, model_name):
+    '''From an existing `nlp` object, adds the vectors from the specific `model_name` by adding pipeline stages'''
+    if model_name not in util.configs:
+        raise ValueError(f'Model "{model_name}" not available')
+    config = util.configs[model_name]
+    return UniversalSentenceEncoder.create_nlp(config, nlp)
+
+class AddModelToDoc(object):
+    '''Factory of the `use_add_model_to_doc` pipeline stage. It tells spacy how to create the stage '''
+    name = 'use_add_model_to_doc'
 
     def __init__(self, nlp):
+        # TODO handle cache flag
         model_name = f'{nlp.meta["lang"]}_{nlp.meta["name"]}'
-        # print('init.model_name', model_name)
-        self.tfhub_model_url = util.configs[model_name]['tfhub_model_url']
-        # load tfhub now (not compulsory but nice to have it loaded when running `spacy.load`)
-        UniversalSentenceEncoder.create_wrapper(self.tfhub_model_url)
+        cfg = util.configs[model_name]
+        self.model = TFHubWrapper(cfg['use_model_url'], enable_cache=True)
 
     def __call__(self, doc):
-        # print('SaveTfhubModelUrl called. tfhub_model_url =', self.tfhub_model_url)
-        doc._.tfhub_model_url = self.tfhub_model_url
+        doc._.use_model = self.model
 
         return doc
 
 
 class OverwriteVectors(object):
-    name = "overwrite_vectors"
+    '''Factory of the `use_overwrite_vectors` pipeline stage. It tells spacy how to create the stage '''
+    name = 'use_overwrite_vectors'
 
     def __init__(self, nlp):
-        # enable_cache = cfg.get('enable_cache', True)
-        # UniversalSentenceEncoder.install_extensions()
-        # print('enable_cache', enable_cache)
-        # print(nlp.meta)
-        # load tfhub now (not compulsory but nice to have it loaded when running `spacy.load`)
-        #UniversalSentenceEncoder.create_wrapper(enable_cache=enable_cache)
         pass
 
     def __call__(self, doc):

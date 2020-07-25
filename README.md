@@ -81,3 +81,17 @@ doc = nlp('Hi')
 # extend the nlp pipeline with the `en_use_lg` model
 spacy_universal_sentence_encoder.create_from(nlp, 'en_use_lg')
 ```
+
+
+## Utils
+
+To build and upload
+```bash
+VERSION=0.3.0
+# build the standalone models (17)
+./build_models.sh
+# build the archive at dist/spacy_universal_sentence_encoder-${VERSION}.tar.gz
+python setup.py sdist
+# upload to pypi
+twine upload dist/spacy_universal_sentence_encoder-${VERSION}.tar.gz
+```

@@ -1,6 +1,6 @@
 set -e
 
-VERSION=0.3.0
+VERSION=0.3.1
 
 # for every model
 for MODEL_NAME in en_use_md en_use_lg xx_use_md xx_use_lg

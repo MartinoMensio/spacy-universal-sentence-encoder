@@ -23,10 +23,10 @@ Or you can install the following pre-packaged models with pip:
 
 | model name | source | pip package |
 |------------|--------|---|
-| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/en_use_md-0.3.0.tar.gz#en_use_md-0.3.0` |
-| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/en_use_lg-0.3.0.tar.gz#en_use_lg-0.3.0` |
-| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/xx_use_md-0.3.0.tar.gz#xx_use_md-0.3.0` |
-| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.0/xx_use_lg-0.3.0.tar.gz#xx_use_lg-0.3.0` |
+| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.1/en_use_md-0.3.1.tar.gz#en_use_md-0.3.1` |
+| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.1/en_use_lg-0.3.1.tar.gz#en_use_lg-0.3.1` |
+| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.1/xx_use_md-0.3.1.tar.gz#xx_use_md-0.3.1` |
+| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.1/xx_use_lg-0.3.1.tar.gz#xx_use_lg-0.3.1` |
 
 
 ## Usage
@@ -87,7 +87,7 @@ spacy_universal_sentence_encoder.create_from(nlp, 'en_use_lg')
 
 To build and upload
 ```bash
-VERSION=0.3.0
+VERSION=0.3.1
 # build the standalone models (17)
 ./build_models.sh
 # build the archive at dist/spacy_universal_sentence_encoder-${VERSION}.tar.gz

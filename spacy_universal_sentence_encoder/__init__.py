@@ -6,7 +6,7 @@ from pathlib import Path
 import spacy
 from spacy.util import load_model_from_init_py, get_model_meta
 from spacy.language import Language
-from spacy.tokens import Span
+from spacy.tokens import Span, Doc
 from spacy.matcher import Matcher
 import warnings
 from . import util
@@ -15,7 +15,7 @@ from .util import create_lang as load_model
 
 __version__ = util.pkg_meta["version"]
 
-from .language import UniversalSentenceEncoder, TFHubWrapper
+from .language import UniversalSentenceEncoder, TFHubWrapper, AddModelToDoc, OverwriteVectors
 UniversalSentenceEncoder.install_extensions()
 
 # warning suppress for empty vocabulary
@@ -35,30 +35,8 @@ def create_from(nlp, model_name):
     config = util.configs[model_name]
     return UniversalSentenceEncoder.create_nlp(config, nlp)
 
-class AddModelToDoc(object):
-    '''Factory of the `use_add_model_to_doc` pipeline stage. It tells spacy how to create the stage '''
-    name = 'use_add_model_to_doc'
-
-    def __init__(self, nlp):
-        # TODO handle cache flag
-        model_name = f'{nlp.meta["lang"]}_{nlp.meta["name"]}'
-        cfg = util.configs[model_name]
-        self.model = TFHubWrapper(cfg['use_model_url'], enable_cache=True)
-
-    def __call__(self, doc):
-        doc._.use_model = self.model
-
-        return doc
-
-
-class OverwriteVectors(object):
-    '''Factory of the `use_overwrite_vectors` pipeline stage. It tells spacy how to create the stage '''
-    name = 'use_overwrite_vectors'
-
-    def __init__(self, nlp):
-        pass
-
-    def __call__(self, doc):
-        UniversalSentenceEncoder.overwrite_vectors(doc)
-
-        return doc
+def doc_from_bytes(nlp, bytes):
+    """Returns a serialised doc from the bytes coming from `doc.to_bytes()` """
+    doc = Doc(nlp.vocab).from_bytes(bytes)
+    UniversalSentenceEncoder.overwrite_vectors(doc)
+    return doc

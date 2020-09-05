@@ -82,6 +82,23 @@ doc = nlp('Hi')
 spacy_universal_sentence_encoder.create_from(nlp, 'en_use_lg')
 ```
 
+## Common issues
+
+Here you can find the most common issues with possible solutions.
+
+### Serialisation
+
+To serialise and deserialise nlp objects, SpaCy does not restore `user_hooks` after deserialisation, so a call to `from_bytes` will result in not using the TensorFlow vectors, so the similarities won't be good. For this reason the suggested solution is:
+
+- serialise with `bytes = doc.to_bytes()` normally
+- deserialise with `spacy_universal_sentence_encoder.doc_from_bytes(nlp, bytes)` which will also restore the user hooks
+
+### Multiprocessing
+
+This library, relying on TensorFlow, is not fork-safe. This means that if you are using this library inside multiple processes (e.g. with a `multiprocessing.pool.Pool`), your processes will deadlock.
+The solutions are:
+- use a thread-based environment (e.g. `multiprocessing.pool.ThreadPool`)
+- only use this library inside the created processes (first create the processes and then import and use the library)
 
 ## Utils
 

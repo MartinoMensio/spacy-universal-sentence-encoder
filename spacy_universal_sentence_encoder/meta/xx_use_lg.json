@@ -1,7 +1,7 @@
 {
     "lang": "xx",
     "name": "use_lg",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "spacy_version": ">=2.1,<2.4",
     "description": "TensorFlow Hub wrapper for Universal Sentence Encoder",
     "author": "Martino Mensio",
@@ -9,7 +9,7 @@
     "url": "https://github.com/MartinoMensio/spacy-universal-sentence-encoder",
     "license": "MIT",
     "requirements": [
-        "spacy_universal_sentence_encoder==0.3.1"
+        "spacy_universal_sentence_encoder==0.3.2"
     ],
     "sources": [{
         "name": "Universal Sentence Encoder Multilingual - Large",

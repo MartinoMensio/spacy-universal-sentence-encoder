@@ -86,6 +86,19 @@ spacy_universal_sentence_encoder.create_from(nlp, 'en_use_lg')
 
 Here you can find the most common issues with possible solutions.
 
+### Using a pre-downloaded model
+
+If you want to use a model that you have already downloaded from TensorFlow Hub, belonging to the [Universal Sentence Encoder family](https://tfhub.dev/google/collections/universal-sentence-encoder/1), you can use it by doing the following:
+
+- locate the full path of the folder where you have downloaded and extracted the model. Let's suppose the location is `/Users/foo/Downloads`
+- rename the folder of the extracted model (the one directly containing the folders `variables` and the file `saved_model.pb`) to the sha1 hash of the TFHub model [source](https://medium.com/@xianbao.qian/how-to-run-tf-hub-locally-without-internet-connection-4506b850a915). The mapping URL / sha1 values is the following:
+  - [`en_use_md`](https://tfhub.dev/google/universal-sentence-encoder/4): `063d866c06683311b44b4992fd46003be952409c`
+  - [`en_use_lg`](https://tfhub.dev/google/universal-sentence-encoder-large/5): `c9fe785512ca4a1b179831acb18a0c6bfba603dd`
+  - [`xx_use_md`](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3): `26c892ffbc8d7b032f5a95f316e2841ed4f1608c`
+  - [`xx_use_lg`](https://tfhub.dev/google/universal-sentence-encoder-multilingual-large/3): `97e68b633b7cf018904eb965602b92c9f3ad14c9`
+- set the environment variable `TFHUB_CACHE_DIR` to the location containing the renamed folder, in our case `/Users/foo/Downloads` (set it before trying to download the model)
+- Now load your model and it should see that it was already downloaded
+
 ### Serialisation
 
 To serialise and deserialise nlp objects, SpaCy does not restore `user_hooks` after deserialisation, so a call to `from_bytes` will result in not using the TensorFlow vectors, so the similarities won't be good. For this reason the suggested solution is:

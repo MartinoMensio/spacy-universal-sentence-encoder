@@ -40,7 +40,7 @@ class AddModelToDoc(object):
 
     @staticmethod
     def get_model(use_model_url):
-        print('getting', use_model_url)
+        # print('getting', use_model_url)
 
         # PID checking: TensorFlow gets stuck with multiple processes
         my_pid = os.getpid()
@@ -135,7 +135,8 @@ class TFHubWrapper(object):
         self.model_url = use_model_url
         self.enable_cache = enable_cache
         # models saved here
-        os.environ['TFHUB_CACHE_DIR'] = str(pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'models')
+        if not os.environ.get('TFHUB_CACHE_DIR'):
+            os.environ['TFHUB_CACHE_DIR'] = str(pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'models')
         # show download info
         os.environ['TFHUB_DOWNLOAD_PROGRESS'] = '1'
         self.model = hub.load(self.model_url)

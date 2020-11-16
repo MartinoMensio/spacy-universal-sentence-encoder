@@ -5,7 +5,12 @@ from spacy.tokens import Doc, Span, Token
 from spacy.util import get_lang_class
 from absl import logging
 import tensorflow_hub as hub
-import tensorflow_text
+try:
+    # installed with the extra `multi`
+    import tensorflow_text
+except:
+    # without extra `multi`
+    pass
 import numpy as np
 import os
 import pathlib
@@ -102,16 +107,23 @@ class UniversalSentenceEncoder(Language):
 
     @staticmethod
     def create_nlp(cfg, nlp=None):
-        # model = TFHubWrapper(cfg['use_model_url'], enable_cache=True)
-        _ = AddModelToDoc.get_model(cfg['use_model_url'])
+        spacy_base_model = cfg['spacy_base_model']
+        use_model_url = cfg['use_model_url']
+        
+        if spacy_base_model == 'xx':
+            # double check `multi` extra is installed
+            if not 'tensorflow_text' in globals():
+                raise ValueError('This multilanguage model requires tensorflow_text. Install it with: pip install spacy-universal-sentence-encoder[multi]')
+        
+        _ = AddModelToDoc.get_model(use_model_url)
 
         def add_model_to_doc(doc):
-            doc._.use_model_url = cfg['use_model_url']
+            doc._.use_model_url = use_model_url
             # doc = Serializable(doc, model)
             return doc
         
         if not nlp:
-            nlp = spacy.blank(cfg['spacy_base_model'])
+            nlp = spacy.blank(spacy_base_model)
             nlp.add_pipe(nlp.create_pipe('sentencizer'))
         nlp.add_pipe(add_model_to_doc, name='use_add_model_to_doc', first=True)
         nlp.add_pipe(UniversalSentenceEncoder.overwrite_vectors, name='use_overwrite_vectors', after='use_add_model_to_doc')

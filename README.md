@@ -19,14 +19,16 @@ You can install this library from:
 - github: `pip install git+https://github.com/MartinoMensio/spacy-universal-sentence-encoder.git`
 - pyPI: `pip install spacy-universal-sentence-encoder`
 
-Or you can install the following pre-packaged models with pip:
+To use the multilingual version of the models, you need to install the extra named `multi` with the command: `pip install spacy-universal-sentence-encoder[multi]`. This installs the dependency `tensorflow-text` that is required to run the multilingual models. Note that this library is still not available for Windows operating systems (https://github.com/tensorflow/text/issues/291).
+
+In alternative, you can install the following standalone pre-packaged models with pip. The same limitation for multilingual models applies (when trying to install a multilingual model on Windows, pip will say that no tensorflow-text is available). Each model can be installed independently:
 
 | model name | source | pip package |
 |------------|--------|---|
-| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.3/en_use_md-0.3.3.tar.gz#en_use_md-0.3.3` |
-| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.3/en_use_lg-0.3.3.tar.gz#en_use_lg-0.3.3` |
-| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.3/xx_use_md-0.3.3.tar.gz#xx_use_md-0.3.3` |
-| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.3/xx_use_lg-0.3.3.tar.gz#xx_use_lg-0.3.3` |
+| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.4/en_use_md-0.3.4.tar.gz#en_use_md-0.3.4` |
+| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.4/en_use_lg-0.3.4.tar.gz#en_use_lg-0.3.4` |
+| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.4/xx_use_md-0.3.4.tar.gz#xx_use_md-0.3.4` |
+| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.3.4/xx_use_lg-0.3.4.tar.gz#xx_use_lg-0.3.4` |
 
 
 ## Usage
@@ -118,7 +120,7 @@ The solutions are:
 To build and upload
 ```bash
 # change version
-VERSION=0.3.3
+VERSION=0.3.4
 # change version references everywhere
 # update locally installed package
 pip install -r requirements.txt

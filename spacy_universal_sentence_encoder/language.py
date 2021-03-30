@@ -73,7 +73,7 @@ def use_model_factory(nlp, name, use_model_url, model_name, enable_cache, debug)
             else:
                 if debug:
                     print(f'Your model was mapped to {model_name_best}')
-                    model_name = model_name_best
+                model_name = model_name_best
         config = util.configs[model_name]
         model_url = config['use_model_url']
 

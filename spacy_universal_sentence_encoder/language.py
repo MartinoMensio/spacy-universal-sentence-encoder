@@ -20,6 +20,10 @@ from . import util
 
 # magic
 def get_vector(token_span_doc):
+    # Use the vocab if the user has set there something.
+    # The comparison is done on the string
+    if token_span_doc.vocab.has_vector(token_span_doc.text):
+        return token_span_doc.vocab.get_vector(token_span_doc.text)
     doc = token_span_doc.doc
     use_model_url = doc._.use_model_url
     # if not use_model_url:

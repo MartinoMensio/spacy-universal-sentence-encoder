@@ -46,6 +46,27 @@ configs = {
         'spacy_base_model': 'xx',
         'use_model_url': 'https://tfhub.dev/google/universal-sentence-encoder-xling/en-fr/1'
     },
+    # CMLM models
+    'xx_use_cmlm': {
+        'spacy_base_model': 'xx',
+        'use_model_url': 'https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base/1',
+        'preprocessor_url':'https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-preprocess/2'
+    },
+    'xx_use_cmlm_br': {
+        'spacy_base_model': 'xx',
+        'use_model_url': 'https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base-br/1',
+        'preprocessor_url': 'https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-preprocess/2'
+    },
+    'en_use_cmlm_md': {
+        'spacy_base_model': 'en',
+        'use_model_url': 'https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-base/1',
+        'preprocessor_url': 'https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3'
+    },
+    'en_use_cmlm_lg': {
+        'spacy_base_model': 'en',
+        'use_model_url': 'https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-large/1',
+        'preprocessor_url':'https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3'
+    }
 }
 
 def create_lang(model_name):

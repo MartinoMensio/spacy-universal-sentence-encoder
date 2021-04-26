@@ -12,4 +12,5 @@ If you want to do so, at the same time you need to provide the environment varia
 
 ```bash
 docker run -it --rm -v `pwd`/models/universal_sentence_encoder:/SOME_SIMPLE_PATH_HERE -e TFHUB_CACHE_DIR=/SOME_SIMPLE_PATH_HERE --entrypoint /bin/bash nlp
+docker run -it --rm -v $HOME/tfhub_models:/SOME_SIMPLE_PATH_HERE -e TFHUB_CACHE_DIR=/SOME_SIMPLE_PATH_HERE --entrypoint /bin/bash nlp
 ```

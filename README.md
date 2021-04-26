@@ -30,10 +30,10 @@ In alternative, you can install the following standalone pre-packaged models wit
 
 | model name | source | pip package |
 |------------|--------|---|
-| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.1/en_use_md-0.4.1.tar.gz#en_use_md-0.4.1` |
-| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.1/en_use_lg-0.4.1.tar.gz#en_use_lg-0.4.1` |
-| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.1/xx_use_md-0.4.1.tar.gz#xx_use_md-0.4.1` |
-| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.1/xx_use_lg-0.4.1.tar.gz#xx_use_lg-0.4.1` |
+| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/en_use_md-0.4.3.tar.gz#en_use_md-0.4.3` |
+| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/en_use_lg-0.4.3.tar.gz#en_use_lg-0.4.3` |
+| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/xx_use_md-0.4.3.tar.gz#xx_use_md-0.4.3` |
+| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/xx_use_lg-0.4.3.tar.gz#xx_use_lg-0.4.3` |
 
 
 ## Usage
@@ -138,7 +138,7 @@ The solutions are:
 To build and upload
 ```bash
 # change version
-VERSION=0.4.1
+VERSION=0.4.3
 # change version references everywhere
 # update locally installed package
 pip install -r requirements.txt

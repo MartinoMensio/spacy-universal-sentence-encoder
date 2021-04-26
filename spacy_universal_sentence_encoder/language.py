@@ -165,11 +165,12 @@ def set_hooks(doc):
 def create_nlp(cfg, nlp=None):
     spacy_base_model = cfg['spacy_base_model']
     use_model_url = cfg['use_model_url']
+    preprocessor_url = cfg.get('preprocessor_url', None)
     
     if not nlp:
         nlp = spacy.blank(spacy_base_model)
         nlp.add_pipe('sentencizer')
-    nlp.add_pipe('universal_sentence_encoder', config={'use_model_url': use_model_url})
+    nlp.add_pipe('universal_sentence_encoder', config={'use_model_url': use_model_url, 'preprocessor_url': preprocessor_url})
     return nlp
 
 

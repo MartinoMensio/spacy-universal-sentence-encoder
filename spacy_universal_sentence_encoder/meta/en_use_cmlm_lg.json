@@ -1,0 +1,36 @@
+{
+    "lang": "en",
+    "name": "use_cmlm_lg",
+    "version": "0.4.3",
+    "spacy_version": ">=3.0,<4.0",
+    "description": "TensorFlow Hub wrapper for Universal Sentence Encoder",
+    "author": "Martino Mensio",
+    "email": "martino.mensio@open.ac.uk",
+    "url": "https://github.com/MartinoMensio/spacy-universal-sentence-encoder",
+    "license": "MIT",
+    "requirements": [
+        "spacy_universal_sentence_encoder[multi]>=0.4.3"
+    ],
+    "sources": [{
+        "name": "Universal Sentence Encoder CMLM English Large",
+        "url": "https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-large",
+        "license": "Apache-2.0"
+    }],
+    "vectors": {
+        "width": 768,
+        "vectors": 0,
+        "keys": 0,
+        "name": null
+    },
+    "pipeline": [
+        "universal_sentence_encoder",
+        "sentencizer"
+    ],
+    "factories": {
+        "universal_sentence_encoder": "universal_sentence_encoder",
+        "sentencizer": "sentencizer"
+    },
+    "labels": {
+
+    }
+}

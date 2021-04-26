@@ -35,6 +35,14 @@ In alternative, you can install the following standalone pre-packaged models wit
 | xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/xx_use_md-0.4.3.tar.gz#xx_use_md-0.4.3` |
 | xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/xx_use_lg-0.4.3.tar.gz#xx_use_lg-0.4.3` |
 
+In addition, also [CMLM models](https://openreview.net/pdf?id=WDVD4lUCTzU) are now available:
+
+| model name | source | pip package |
+|------------|--------|---|
+| en_use_cmlm_md  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-base | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/en_use_cmlm_md-0.4.3.tar.gz#en_use_cmlm_md-0.4.3` |
+| en_use_cmlm_lg  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/en_use_cmlm_lg-0.4.3.tar.gz#en_use_cmlm_lg-0.4.3` |
+| xx_use_cmlm  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/xx_use_cmlm-0.4.3.tar.gz#xx_use_cmlm-0.4.3` |
+| xx_use_cmlm_br  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base-br | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.3/xx_use_cmlm_br-0.4.3.tar.gz#xx_use_cmlm_br-0.4.3` |
 
 ## Usage
 
@@ -70,6 +78,7 @@ In all of the three options, the first time that you load a certain Universal Se
 The last option (using `nlp.add_pipe`) can be customised with the following configurations:
 
 - `use_model_url`: allows to use a specific TFHub URL
+- `preprocessor_url`: for TFHub models that need specific preprocessing with another TFHub model (e.g., see documentation of [CMLM models](https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-base))
 - `model_name`: to load a specific model instead of mapping the current (language, size) to one of the options in the table above
 - `enable_cache`: default `True`, enables an internal cache to avoid embedding the same text (doc/span/token) twice. It makes the computation faster (when enough duplicates are embedded) but has a memory footprint because all the embeddings extracted are kept in the cache
 - `debug`: default `False` shows debugging information.

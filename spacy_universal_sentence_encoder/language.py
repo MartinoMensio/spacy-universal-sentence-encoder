@@ -4,6 +4,7 @@ from spacy.language import Language
 from spacy.tokens import Doc, Span, Token
 from spacy.util import get_lang_class
 from absl import logging
+import tensorflow as tf
 import tensorflow_hub as hub
 try:
     # installed with the extra `multi`
@@ -204,14 +205,17 @@ class TFHubWrapper(object):
             self.model.preprocessor = preprocessor
 
 
-    def embed(self, texts: List[str]):
+    # Specify input_signature in tf.function to limit tracing. - I followed the tensorflow hub documentation from here
+    # https://www.tensorflow.org/guide/function#controlling_retracing
+    @tf.function(input_signature=(tf.TensorSpec(shape=[None], dtype=tf.string),))
+    def embed(self, texts):
         """Embed multiple texts"""
         # print('embed TFHubWrapper called')
         if hasattr(self.model, 'preprocessor'):
             result = self.model(self.model.preprocessor(texts))['default']
         else:
             result = self.model(texts)
-        result = np.array(result)
+        # result = np.array(result)   # Not sure how to convert Tensor to numpy array here. Would this be a bad idea?
         return result
 
     # extension implementation
@@ -221,7 +225,7 @@ class TFHubWrapper(object):
         if self.enable_cache and text in self.embed_cache:
             return self.embed_cache[text]
         else:
-            result = self.embed([text])[0]
+            result = self.embed(tf.constant([text]))[0] #Converted a sentence into a tf.constant 
             if self.enable_cache:
                 self.embed_cache[text] = result
             return result

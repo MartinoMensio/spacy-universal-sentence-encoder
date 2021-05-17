@@ -215,7 +215,6 @@ class TFHubWrapper(object):
             result = self.model(self.model.preprocessor(texts))['default']
         else:
             result = self.model(texts)
-        # result = np.array(result)   # Not sure how to convert Tensor to numpy array here. Would this be a bad idea?
         return result
 
     # extension implementation
@@ -225,7 +224,10 @@ class TFHubWrapper(object):
         if self.enable_cache and text in self.embed_cache:
             return self.embed_cache[text]
         else:
-            result = self.embed(tf.constant([text]))[0] #Converted a sentence into a tf.constant 
+            # Converted a sentence into a tf.constant
+            result = self.embed(tf.constant([text]))[0]
+            # and the result back to numpy
+            result = result.numpy()
             if self.enable_cache:
                 self.embed_cache[text] = result
             return result

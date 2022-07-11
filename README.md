@@ -30,19 +30,19 @@ In alternative, you can install the following standalone pre-packaged models wit
 
 | model name | source | pip package |
 |------------|--------|---|
-| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/en_use_md-0.4.4.tar.gz#en_use_md-0.4.4` |
-| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/en_use_lg-0.4.4.tar.gz#en_use_lg-0.4.4` |
-| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/xx_use_md-0.4.4.tar.gz#xx_use_md-0.4.4` |
-| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/xx_use_lg-0.4.4.tar.gz#xx_use_lg-0.4.4` |
+| en_use_md  | https://tfhub.dev/google/universal-sentence-encoder | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/en_use_md-0.4.5.tar.gz#en_use_md-0.4.5` |
+| en_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/en_use_lg-0.4.5.tar.gz#en_use_lg-0.4.5` |
+| xx_use_md  | https://tfhub.dev/google/universal-sentence-encoder-multilingual | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/xx_use_md-0.4.5.tar.gz#xx_use_md-0.4.5` |
+| xx_use_lg  | https://tfhub.dev/google/universal-sentence-encoder-multilingual-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/xx_use_lg-0.4.5.tar.gz#xx_use_lg-0.4.5` |
 
 In addition, also [CMLM models](https://openreview.net/pdf?id=WDVD4lUCTzU) are now available:
 
 | model name | source | pip package |
 |------------|--------|---|
-| en_use_cmlm_md  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-base | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/en_use_cmlm_md-0.4.4.tar.gz#en_use_cmlm_md-0.4.4` |
-| en_use_cmlm_lg  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/en_use_cmlm_lg-0.4.4.tar.gz#en_use_cmlm_lg-0.4.4` |
-| xx_use_cmlm  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/xx_use_cmlm-0.4.4.tar.gz#xx_use_cmlm-0.4.4` |
-| xx_use_cmlm_br  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base-br | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.4/xx_use_cmlm_br-0.4.4.tar.gz#xx_use_cmlm_br-0.4.4` |
+| en_use_cmlm_md  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-base | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/en_use_cmlm_md-0.4.5.tar.gz#en_use_cmlm_md-0.4.5` |
+| en_use_cmlm_lg  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-large | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/en_use_cmlm_lg-0.4.5.tar.gz#en_use_cmlm_lg-0.4.5` |
+| xx_use_cmlm  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/xx_use_cmlm-0.4.5.tar.gz#xx_use_cmlm-0.4.5` |
+| xx_use_cmlm_br  | https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-base-br | `pip install https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases/download/v0.4.5/xx_use_cmlm_br-0.4.5.tar.gz#xx_use_cmlm_br-0.4.5` |
 
 ## Usage
 
@@ -147,7 +147,7 @@ The solutions are:
 To build and upload
 ```bash
 # change version
-VERSION=0.4.4
+VERSION=0.4.5
 # change version references everywhere
 # update locally installed package
 pip install -r requirements.txt

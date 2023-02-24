@@ -1,4 +1,4 @@
 #!/bin/sh
 echo "Running tests..."
-pytest
+python -m pytest
 echo "Tests passed!"

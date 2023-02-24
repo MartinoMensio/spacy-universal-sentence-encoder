@@ -11,5 +11,6 @@ jobs:
         python-version: '3.8' 
     - name: Install Python dependencies
       uses: py-actions/py-dependency-install@v4
-    - name: Test
-      uses: skx/github-action-tester@master
+    - name: Run pytest
+      run: ./.github/scripts/run-tests.sh
+      shell: bash

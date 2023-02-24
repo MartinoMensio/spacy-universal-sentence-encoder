@@ -4,3 +4,4 @@ twine
 typer
 pylint
 autopep8
+pytest

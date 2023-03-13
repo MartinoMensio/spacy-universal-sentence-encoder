@@ -1,3 +1,7 @@
+[![Tests](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/actions/workflows/tests.yml/badge.svg)](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/actions/workflows/tests.yml)
+[![Downloads](https://static.pepy.tech/badge/spacy-universal-sentence-encoder)](https://pepy.tech/project/spacy-universal-sentence-encoder)
+[![Current Release Version](https://img.shields.io/github/release/MartinoMensio/spacy-universal-sentence-encoder.svg?style=flat-square&logo=github)](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases)
+[![pypi Version](https://img.shields.io/pypi/v/spacy-universal-sentence-encoder.svg?style=flat-square&logo=pypi&logoColor=white)](https://pypi.org/project/spacy-universal-sentence-encoder/)
 # Spacy - Universal Sentence Encoder
 
 Make use of Google's Universal Sentence Encoder directly within SpaCy.
@@ -20,7 +24,7 @@ You can install this library from:
 - pyPI: `pip install spacy-universal-sentence-encoder`
 
 Compatibility:
-- python 3.6/3.7/3.8 (constraint from [tensorflow](https://pypi.org/project/tensorflow/))
+- python 3.6(untested)/3.7/3.8/3.9/3.10 (constraint from [tensorflow](https://pypi.org/project/tensorflow/))
 - tensorflow>=2.4.0,<3.0.0
 - spacy>=3.0.0,<4.0.0 (SpaCy v3 API changed a lot from v2)
 
@@ -141,6 +145,14 @@ This library, relying on TensorFlow, is not fork-safe. This means that if you ar
 The solutions are:
 - use a thread-based environment (e.g. `multiprocessing.pool.ThreadPool`)
 - only use this library inside the created processes (first create the processes and then import and use the library)
+
+### `Using `nlp.pipe` with multiple processes
+
+Spacy does not restore user hooks (`UserWarning: [W109]`) therefore if you use `nlp.pipe` with multiple processes, you won't be able to use the `.vector` on `doc`, `span` and `token`. I am developing a workaround.
+<!-- Use `._.vector` instead. -->
+
+
+
 
 ## Utils
 

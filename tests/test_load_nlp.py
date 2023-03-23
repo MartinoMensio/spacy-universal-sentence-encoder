@@ -1,20 +1,42 @@
 import spacy
+import spacy_universal_sentence_encoder
+
+from . import utils
 
 
-def test_basic_load():
+def test_load_from_pipe_default_en():
     nlp = spacy.blank("en")
     p = nlp.add_pipe("universal_sentence_encoder")
     assert p != None
-    assert "universal_sentence_encoder" in nlp.pipe_names
+    utils._test_default_text(nlp)
 
 
-def test_load_vector():
-    nlp = spacy.blank("en")
+def test_load_from_pipe_default_xx():
+    nlp = spacy.blank("xx")
     p = nlp.add_pipe("universal_sentence_encoder")
     assert p != None
-    assert "universal_sentence_encoder" in nlp.pipe_names
-    doc = nlp("This is a test")
-    vector = doc.vector
-    assert vector is not None
-    shape = vector.shape
-    assert shape != None
+    utils._test_default_text(nlp)
+
+
+def test_load_from_module_default_en():
+    nlp = spacy_universal_sentence_encoder.load_model("en_use_md")
+    assert nlp != None
+    utils._test_default_text(nlp)
+
+
+def test_load_from_module_default_xx():
+    nlp = spacy_universal_sentence_encoder.load_model("xx_use_md")
+    assert nlp != None
+    utils._test_default_text(nlp)
+
+
+def test_load_models_from_module_all():
+    for model_name in utils.model_names:
+        nlp = spacy_universal_sentence_encoder.load_model(model_name)
+        utils._test_default_text(nlp)
+
+
+def test_load_models_from_module_all():
+    for model_name in utils.model_names:
+        nlp = spacy_universal_sentence_encoder.load_model(model_name)
+        utils._test_default_text(nlp)

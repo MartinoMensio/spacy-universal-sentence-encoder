@@ -32,9 +32,13 @@ def test_load_from_module_default_xx():
 
 
 @pytest.mark.skipif(not utils.full_test, reason="not full test")
-def test_load_models_from_module_all():
+def test_load_models_from_pipe_all():
     for model_name in utils.model_names:
-        nlp = spacy_universal_sentence_encoder.load_model(model_name)
+        nlp = spacy.blank("en")
+        p = nlp.add_pipe(
+            "universal_sentence_encoder", config={"model_name": model_name}
+        )
+        assert p != None
         utils._test_default_text(nlp)
 
 

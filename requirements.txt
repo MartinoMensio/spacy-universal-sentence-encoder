@@ -1,7 +1,7 @@
+# dev requirements
 -e .[multi]
 
 twine
 typer
-pylint
-autopep8
+black
 pytest

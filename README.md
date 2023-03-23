@@ -1,7 +1,9 @@
 [![Tests](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/actions/workflows/tests.yml/badge.svg)](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/actions/workflows/tests.yml)
 [![Downloads](https://static.pepy.tech/badge/spacy-universal-sentence-encoder)](https://pepy.tech/project/spacy-universal-sentence-encoder)
-[![Current Release Version](https://img.shields.io/github/release/MartinoMensio/spacy-universal-sentence-encoder.svg?style=flat-square&logo=github)](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases)
-[![pypi Version](https://img.shields.io/pypi/v/spacy-universal-sentence-encoder.svg?style=flat-square&logo=pypi&logoColor=white)](https://pypi.org/project/spacy-universal-sentence-encoder/)
+[![Current Release Version](https://img.shields.io/github/release/MartinoMensio/spacy-universal-sentence-encoder.svg?&logo=github)](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases)
+[![pypi Version](https://img.shields.io/pypi/v/spacy-universal-sentence-encoder.svg?&logo=pypi&logoColor=white)](https://pypi.org/project/spacy-universal-sentence-encoder/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 # Spacy - Universal Sentence Encoder
 
 Make use of Google's Universal Sentence Encoder directly within SpaCy.

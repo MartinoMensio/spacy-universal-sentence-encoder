@@ -17,8 +17,8 @@ def test_config_default_en():
 
 def test_use_model_url():
     nlp = spacy.blank("en")
-    url = "https://tfhub.dev/google/universal-sentence-encoder-multilingual-large/3"
-    url2 = "https://tfhub.dev/google/universal-sentence-encoder/4"
+    url = "https://tfhub.dev/google/universal-sentence-encoder/4"
+    url2 = "https://tfhub.dev/google/universal-sentence-encoder-large/5"
     p = nlp.add_pipe("universal_sentence_encoder", config={"use_model_url": url})
     assert p != None
     doc = utils._test_default_text(nlp)
@@ -46,7 +46,6 @@ def test_use_model_url():
 def test_preprocessor_url():
     nlp = spacy.blank("en")
     url = "https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3"
-    url2 = "https://tfhub.dev/google/universal-sentence-encoder-cmlm/multilingual-preprocess/2"
     p = nlp.add_pipe("universal_sentence_encoder", config={"preprocessor_url": url})
     assert p != None
     doc = utils._test_default_text(nlp)
@@ -59,11 +58,11 @@ def test_preprocessor_url():
     # similarity = doc.similarity(doc2)
     # assert similarity < 0.95
     nlp2 = spacy.blank("en")
-    p2 = nlp2.add_pipe("universal_sentence_encoder", config={"preprocessor_url": url2})
+    p2 = nlp2.add_pipe("universal_sentence_encoder")
     assert p2 != None
     doc2 = utils._test_default_text(nlp2)
     vec2 = doc2.vector
-    assert p2.preprocessor_url == url2
+    assert p2.preprocessor_url == None
     # now check that they are very similar still, because preprocessor doesn't change much
     # similarity = doc.similarity(doc2)
     cos_sim = np.dot(vec, vec2) / (np.linalg.norm(vec) * np.linalg.norm(vec2))
@@ -84,7 +83,7 @@ def test_model_name():
     # similarity = doc.similarity(doc2)
     # assert similarity < 0.95
     nlp2 = spacy.blank("en")
-    p2 = nlp2.add_pipe("universal_sentence_encoder", config={"model_name": "xx_use_md"})
+    p2 = nlp2.add_pipe("universal_sentence_encoder", config={"model_name": "en_use_md"})
     assert p2 != None
     doc2 = utils._test_default_text(nlp2)
     vec2 = doc2.vector

@@ -11,6 +11,7 @@ from .util import create_lang as load_model
 __version__ = util.pkg_meta["version"]
 
 from . import language
+multi = language.multi
 
 # warning suppress for empty vocabulary
 warnings.filterwarnings("ignore", message=r"\[W007\]", category=UserWarning)

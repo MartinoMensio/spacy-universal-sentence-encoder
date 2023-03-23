@@ -1,4 +1,5 @@
 import os
+import spacy_universal_sentence_encoder
 
 model_names = [
     "en_use_md",
@@ -12,6 +13,8 @@ model_names = [
 ]
 
 full_test = os.environ.get("FULL_TEST", False)
+multi = spacy_universal_sentence_encoder.multi
+
 
 
 def _test_default_text(nlp):

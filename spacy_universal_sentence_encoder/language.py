@@ -10,9 +10,11 @@ import tensorflow_hub as hub
 try:
     # installed with the extra `multi`
     import tensorflow_text
+
+    multi = True
 except:
     # without extra `multi`
-    pass
+    multi = False
 import numpy as np
 import os
 import pathlib

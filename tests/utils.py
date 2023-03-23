@@ -1,3 +1,5 @@
+import os
+
 model_names = [
     "en_use_md",
     "en_use_lg",
@@ -8,6 +10,8 @@ model_names = [
     "xx_use_cmlm",
     "xx_use_cmlm_br",
 ]
+
+full_test = os.environ.get("FULL_TEST", False)
 
 
 def _test_default_text(nlp):

@@ -24,11 +24,14 @@ You can install this library from:
 - pyPI: `pip install spacy-universal-sentence-encoder`
 
 Compatibility:
-- python 3.6(untested)/3.7/3.8/3.9/3.10 (constraint from [tensorflow](https://pypi.org/project/tensorflow/))
+- python:
+  - 3.6: compatible but not actively tested
+  - 3.7/3.8/3.9/3.10: compatible and actively tested
+  - 3.11 Partially compatible. Does not work with [tensorflow-text](https://pypi.org/project/tensorflow-text/) required for multilingual models
 - tensorflow>=2.4.0,<3.0.0
 - spacy>=3.0.0,<4.0.0 (SpaCy v3 API changed a lot from v2)
 
-To use the multilingual version of the models, you need to install the extra named `multi` with the command: `pip install spacy-universal-sentence-encoder[multi]`. This installs the dependency `tensorflow-text` that is required to run the multilingual models. Note that this library is still not available for Windows operating systems (https://github.com/tensorflow/text/issues/291).
+To use the multilingual version of the models, you need to install the extra named `multi` with the command: `pip install spacy-universal-sentence-encoder[multi]`. This installs the dependency `tensorflow-text` that is required to run the multilingual models. Note that this library is still not available for python3.11.
 
 In alternative, you can install the following standalone pre-packaged models with pip. The same limitation for multilingual models applies (when trying to install a multilingual model on Windows, pip will say that no tensorflow-text is available). Each model can be installed independently:
 

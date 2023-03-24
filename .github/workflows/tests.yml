@@ -23,7 +23,7 @@ jobs:
     - name: Run pytest
       run: coverage run -m pytest
     - name: generate coverage report
-      run: coverage xml # creates coverage.xml
+      run: coverage xml -i # creates coverage.xml
     - name: Upload coverage data to coveralls.io
       run: coveralls --service=github
       env:

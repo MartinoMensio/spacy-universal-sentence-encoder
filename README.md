@@ -27,8 +27,8 @@ You can install this library from:
 
 Compatibility:
 - python:
-  - 3.6/3.7: compatible but not actively tested
-  - 3.8/3.9/3.10: compatible and actively tested
+  - 3.6: compatible but not actively tested
+  - 3.7/3.8/3.9/3.10: compatible and actively tested
   - 3.11 compatible but relies on rc version of [tensorflow-text](https://pypi.org/project/tensorflow-text/) for multilingual models
 - tensorflow>=2.4.0,<3.0.0
 - spacy>=3.0.0,<4.0.0 (SpaCy v3 API changed a lot from v2)

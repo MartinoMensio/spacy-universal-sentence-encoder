@@ -20,21 +20,28 @@ def test_similarity_identical_default_xx():
     nlp = spacy_universal_sentence_encoder.load_model("xx_use_md")
     utils._test_default_similarity_identical(nlp)
 
+
 @pytest.mark.skipif(not utils.multi, reason="no multi")
 def test_similarity_different_default_xx():
     nlp = spacy_universal_sentence_encoder.load_model("xx_use_md")
     utils._test_default_similarity_different(nlp)
 
 
-@pytest.mark.skipif(not utils.full_test and not utils.multi, reason="not full test")
+@pytest.mark.skipif(not utils.full_test, reason="not full test")
 def test_similarity_identical_all():
     for model_name in utils.model_names:
+        if not utils.multi and model_name.startswith("xx"):
+            # skip multi-language models
+            continue
         nlp = spacy_universal_sentence_encoder.load_model(model_name)
         utils._test_default_similarity_identical(nlp)
 
 
-@pytest.mark.skipif(not utils.full_test and not utils.multi, reason="not full test")
+@pytest.mark.skipif(not utils.full_test, reason="not full test")
 def test_similarity_different_all():
     for model_name in utils.model_names:
+        if not utils.multi and model_name.startswith("xx"):
+            # skip multi-language models
+            continue
         nlp = spacy_universal_sentence_encoder.load_model(model_name)
         utils._test_default_similarity_different(nlp)

@@ -2,6 +2,7 @@
 [![Downloads](https://static.pepy.tech/badge/spacy-universal-sentence-encoder)](https://pepy.tech/project/spacy-universal-sentence-encoder)
 [![Current Release Version](https://img.shields.io/github/release/MartinoMensio/spacy-universal-sentence-encoder.svg?&logo=github)](https://github.com/MartinoMensio/spacy-universal-sentence-encoder/releases)
 [![pypi Version](https://img.shields.io/pypi/v/spacy-universal-sentence-encoder.svg?&logo=pypi&logoColor=white)](https://pypi.org/project/spacy-universal-sentence-encoder/)
+[![Coverage Status](https://coveralls.io/repos/github/MartinoMensio/spacy-universal-sentence-encoder/badge.svg?branch=master)](https://coveralls.io/github/MartinoMensio/spacy-universal-sentence-encoder?branch=master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # Spacy - Universal Sentence Encoder
